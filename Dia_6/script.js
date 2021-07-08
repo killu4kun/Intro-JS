@@ -85,3 +85,38 @@ const normalZoom = document.getElementById("days");
 zoom.addEventListener("mouseout", function (darZoom) {
   darZoom.target.style.fontSize = "20px";
 });
+function recebeTarefa(tarefa) {
+  let desgraça = document.querySelector(".my-tasks");
+  let criaSpan = document.createElement("span");
+  criaSpan.innerText = tarefa;
+  desgraça.appendChild(criaSpan);
+}
+recebeTarefa("texto");
+
+function recebeCor(cor) {
+  let caralho = document.querySelector(".my-tasks");
+  let criaDiv = document.createElement("div");
+  criaDiv.classList.add("div-selecionada");
+  criaDiv.style.backgroundColor = cor;
+  caralho.appendChild(criaDiv);
+}
+recebeCor("black");
+
+const selectDivColor = document.querySelector(".div-selecionada");
+selectDivColor.addEventListener("click", function (selected) {
+  if (selectDivColor.classList.contains("task") !== "true") {
+    selected.target.classList.add("task");
+    selected.target.classList.add("selected");
+  } else {
+    selected.target.classList.remove("selected");
+  }
+});
+
+const selecionaDias = document.getElementById("days");
+selecionaDias.addEventListener("click", function () {
+  if (selecionaDias.style.backgroundColor !== "white") {
+    selecionaDias.target.style.backgroundColor = "black";
+  } else {
+    selecionaDias.target.style.backgroundColor = "white";
+  }
+});
