@@ -96,27 +96,32 @@ recebeTarefa("texto");
 function recebeCor(cor) {
   let caralho = document.querySelector(".my-tasks");
   let criaDiv = document.createElement("div");
-  criaDiv.classList.add("div-selecionada");
+  criaDiv.className = "task";
   criaDiv.style.backgroundColor = cor;
   caralho.appendChild(criaDiv);
 }
 recebeCor("black");
 
-const selectDivColor = document.querySelector(".div-selecionada");
-selectDivColor.addEventListener("click", function (selected) {
-  if (selectDivColor.classList.contains("task") !== "true") {
-    selected.target.classList.add("task");
-    selected.target.classList.add("selected");
+let selectDivColor = document.getElementsByClassName("task selected");
+let mySelect = document.querySelector(".task");
+mySelect.addEventListener("click", function (selected) {
+  if (selectDivColor.length === 0) {
+    selected.target.className = "task selected";
   } else {
-    selected.target.classList.remove("selected");
+    selected.target.className = "task";
   }
 });
 
-const selecionaDias = document.getElementById("days");
-selecionaDias.addEventListener("click", function () {
-  if (selecionaDias.style.backgroundColor !== "white") {
-    selecionaDias.target.style.backgroundColor = "black";
-  } else {
-    selecionaDias.target.style.backgroundColor = "white";
+let selectCalendarColor = document.getElementsByClassName("task selected");
+let selectDay = document.querySelector("#days");
+let taskDiv = document.querySelector(".task");
+let taskColor = taskDiv.style.backgroundColor;
+selectDay.addEventListener("click", function (corFundo) {
+  let corFundinho = corFundo.target.style.color;
+  if (selectCalendarColor.length > 0 && corFundinho !== taskColor) {
+    let corzinha = selectCalendarColor[0].style.backgroundColor;
+    corFundo.target.style.color = "black";
+  } else if (corFundinho === taskColor && selectCalendarColor.length != 0) {
+    corFundo.target.style.color = "rgb (119,119,119)";
   }
 });
