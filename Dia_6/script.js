@@ -122,6 +122,6 @@ selectDay.addEventListener("click", function (corFundo) {
     let corzinha = selectCalendarColor[0].style.backgroundColor;
     corFundo.target.style.color = "black";
   } else if (corFundinho === taskColor && selectCalendarColor.length != 0) {
-    corFundo.target.style.color = "rgb (119,119,119)";
+    corFundo.target.style.color = "rgb(119,119,119)";
   }
 });
